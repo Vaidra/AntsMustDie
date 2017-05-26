@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>658deb50-4d0d-4ba1-a0ef-6fa8813e4709</ProjectGuid>
+    <ProjectGuid>28b8d2a5-4519-4eea-903a-0f781f151e04</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>AntsMustDie.py</StartupFile>
     <SearchPath>
@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>AntsMustDie</Name>
     <RootNamespace>AntsMustDie</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.2-32</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AntsMustDie.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.2-32" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
