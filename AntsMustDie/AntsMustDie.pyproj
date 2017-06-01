@@ -23,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AntsMustDie.py" />
-    <Compile Include="class1.py">
+    <Compile Include="map.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
