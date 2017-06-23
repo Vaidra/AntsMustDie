@@ -24,10 +24,13 @@
   <ItemGroup>
     <Compile Include="Ant.py" />
     <Compile Include="AntsMustDie.py" />
-    <Compile Include="map.py">
+    <Compile Include="Weapon.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tower.py" />
+    <Compile Include="Map.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pedestal.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.2-32" />
