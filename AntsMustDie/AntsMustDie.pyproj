@@ -24,6 +24,9 @@
   <ItemGroup>
     <Compile Include="Ant.py" />
     <Compile Include="AntsMustDie.py" />
+    <Compile Include="WeaponFeature.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Weapon.py">
       <SubType>Code</SubType>
     </Compile>
