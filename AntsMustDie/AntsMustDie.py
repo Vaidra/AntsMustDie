@@ -1,4 +1,9 @@
 import pygame, sys
+from Weapon import * 
+#import Weapon
+
+weap = Weapon();
+weap.generate();
 
 pygame.init()
 
