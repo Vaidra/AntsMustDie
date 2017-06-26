@@ -5,42 +5,18 @@ class Weapon(object):
     """description of Weapon"""
 
     def __init__ (self):
-        self.x_position         = 0#= _x_position
-        self.y_position         = 0#= _y_position
-        self.age                = 0#= _age
-        self.damage_min         = 0#= _damage_min
-        self.damage_max         = 0#= _damage_max
-        self.damage             = 0#= _damage
-        self.fire_speed         = 0#= _fire_speed
-        self.reloading_time     = 0#= _reload_time
-        self.range              = 0#= _range
-
-
-    #def __init__ (
-    #    self, 
-    #    _x_position,
-    #    _y_position,
-    #    _age,
-    #    _damage_min,
-    #    _damage_max,
-    #    _damage, 
-    #    _fire_speed,
-    #    _reload_time,
-    #    _range_min,
-    #    _range_max,
-    #    _range
-    #):
-    #    self.x_position         = _x_position
-    #    self.y_position         = _y_position
-    #    self.age                = _age
-    #    self.damage_min         = _damage_min
-    #    self.damage_max         = _damage_max
-    #    self.damage             = _damage
-    #    self.fire_speed         = _fire_speed
-    #    self.reloading_time     = _reload_time
-    #    self.range_min          = _range_min
-    #    self.range_max          = _range_max
-    #    self.range              = _range
+        self.x_position         = 0 # Position ligne
+        self.y_position         = 0 # Position colonne
+        self.age                = 0 # Age de l'arme
+        self.damage_min         = 0 # Dégats minimaux
+        self.damage_max         = 0 # Dégats maximaux
+        self.damage             = 0 # Dégats aléatoire entre le min et max
+        self.fire_speed         = 0 # Vitesse de tir
+        self.reloading_time     = 0 # Temps de rechargement
+        self.range              = 0 # Distance
+        self.ammunition         = 0 # Munition dans un chargeur
+        self.magasine           = 0 # Chargeur
+        self.projectile_number  = 0 # Projectile par balle tirée
 
     # Getteur
     def getXPosition(self):
@@ -67,6 +43,14 @@ class Weapon(object):
     def getRange(self):
         return self.range
 
+    def getAmmunition(self):
+        return self.ammunition
+
+    def getMagasine(self):
+        return self.magasine
+
+    def getProjectileNumber(self):
+        return self.projectile_number
 
     # Setteur
     def setXPosition(self, _x_position):
@@ -92,6 +76,16 @@ class Weapon(object):
 
     def setRange(self, _range):
         self.range = _range
+
+    def setAmmunition(self, _ammunition):
+        self.ammunition = _ammunition
+
+    def setMagasine(self, _magasine):
+        self.magasine =_magasine
+
+    def setProjectileNumber(self, _projectile_number):
+        self.projectile_number = _projectile_number
+
 
 
     #############################
