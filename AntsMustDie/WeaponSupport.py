@@ -1,4 +1,4 @@
-class Pedestal(object):
+class WeaponSupport(object):
     """description of tower"""
 
     def __init__ (
