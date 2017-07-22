@@ -5,11 +5,16 @@ from MapEdit import *
 from Editor import *
 from Game import *
 from Weapon import * 
+from WeaponSupport import * 
 #import Weapon
 
 weap = Weapon();
 weap.generate();
 weap.displayInformations();
+
+support = WeaponSupport();
+support.generate();
+support.displayInformations();
 
 """
 class TEST():

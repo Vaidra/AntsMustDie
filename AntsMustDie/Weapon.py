@@ -95,9 +95,9 @@ class Weapon(object):
 
     #############################
     def getAgeName(self):
-        if getAge(self) == WeaponFeature.AGE.PREHISTORIC :
+        if self.getAge() == WeaponFeature.AGE.PREHISTORIC :
             return "Prehistoric"
-        elif getAge(self) == WeaponFeature.AGE.MIDDLE_AGES :
+        elif self.getAge() == WeaponFeature.AGE.MIDDLE_AGES :
             return "MiddleAge"
 
     #def getTypeName(self):
@@ -128,10 +128,12 @@ class Weapon(object):
     #############################
     # Affichage des paramètres
     def displayInformations(self):
+        print(" ### Weapon ###")
         print(self.getWeaponName())
         print("damage : "+str(self.damage_min) + " ; " + str(self.damage_max))
         print("fire speed : "+str(self.fire_speed))
         print("reloading time : "+str(self.getReloadingTime()))
+        print(" ##############")        
 
     #############################
     # Generation
@@ -139,7 +141,7 @@ class Weapon(object):
     def generate(self):
         # Declaration des variables
         weapon_feature = -1
-        age_weapons = WeaponFeature.AGE.DEFAULT
+        age_weapons = WeaponFeature.AGE.UNKNOWN
         weapon_id = -1
 
         # Tirage aléatoire pour définir l'age

@@ -4,7 +4,7 @@ class WeaponFeature(object):
 
     # Définition des ages
     class AGE():
-        DEFAULT     = -1
+        UNKNOWN     = -1
         PREHISTORIC = 0
         MIDDLE_AGES = 1
         N_AGE       = 2
@@ -14,7 +14,7 @@ class WeaponFeature(object):
 
         # Définition des armes Prehistorique
         class PREHISTORIC_WEAPON():
-            DEFAULT              = -1
+            UNKNOWN              = -1
             BOW                  = 0 # ARC
             SLING                = 1 # FRONDE
             SPEAR                = 2 # LANCE
@@ -78,7 +78,7 @@ class WeaponFeature(object):
 
         # Définition des armes du MoyenAge
         class MIDDLEAGES_WEAPON():
-            DEFAULT     = -1
+            UNKNOWN     = -1
             BOW         = 0 # ARC
             CROSSBOW    = 1 # ARBALETE
             THROW_AX    = 2 # HACHE DE JET
