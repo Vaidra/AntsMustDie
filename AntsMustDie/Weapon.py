@@ -237,29 +237,4 @@ class Weapon(object):
         file.write(str(self.toString()+"\n"))
         file.close()
 
-
-
     #############################
-
-        ##########################################################
-        # Bilan des info
-
-        #elif self.age == WeaponFeature.AGE.MIDDLE_AGES:
-        #    toto = 2
-
-        #self.type=rand(0,2)
-
-        #min = self.type*rangeAge
-        #min = (self.type+1)*rangeAge
-
-
-        #if TypeError==PREHIUST:
-        #    min_value = 0
-        #    max_value = 100
-
-
-        #dgt=rand(main,id,max=)
-        #self.type=preHist.type(rand))
-
-        #dgt=ArcDgt(rand(0,1))
-        #range=range(Arc (rand(0,1)))

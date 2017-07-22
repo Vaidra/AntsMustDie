@@ -14,18 +14,18 @@ class WeaponSupportFeature(object):
 
         # Définition des armes Prehistorique
         class PREHISTORIC_SUPPORT():
-            LIFE_MIN            = 0
-            LIFE_MAX            = 100
-            WEAPON_NUMBER_MIN   = 0 
-            WEAPON_NUMBER_MAX   = 4
+            LIFE_MIN        = 0
+            LIFE_MAX        = 100
+            BLOC_NUMBER_MIN = 1 
+            BLOC_NUMBER_MAX = 1
 
         #############################
 
         class MIDDLEAGES_SUPPORT():
-            LIFE_MIN            = 0
-            LIFE_MAX            = 200
-            WEAPON_NUMBER_MIN   = 0 
-            WEAPON_NUMBER_MAX   = 10
+            LIFE_MIN        = 0
+            LIFE_MAX        = 200
+            BLOC_NUMBER_MIN = 1 
+            BLOC_NUMBER_MAX = 2
 
         #############################
 
@@ -44,4 +44,13 @@ class WeaponSupportFeature(object):
         COUNT = 2 # Compteur de tir
         TIME = 3 # Compteur de temps
         
+    ##########################################################
+
+    class SHAPE():
+        UNKNOWN = -1
+        HORIZONTAL_LINE = 0
+        VERTICAL_LINE = 1
+        SQUARE = 2
+        CROSS = 3
+        NB_SHAPE = 4
 

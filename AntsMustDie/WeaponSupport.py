@@ -24,12 +24,10 @@ class WeaponSupport(object):
         self.age                    = 0 # Age du support
         self.x_position             = 0 # Position ligne
         self.y_position             = 0 # Position colonne
-        #self.life_min               = 0 # Vie du support min
-        #self.life_max               = 0 # Vie du support max
         self.life                   = 0 # Vie du support
-        #self.weapon_number_min      = 0 # Nombre d'arme portée
-        #self.weapon_number_max      = 0 # Nombre d'arme portée
         self.weapon_number          = 0 # Nombre d'arme portée
+        self.bloc_number            = 0 # Nombre d'arme portée
+        self.bloc_shape             = 0 # Forme du support
         self.targeting_methode      = 0 # Méthode de ciblage de la cible
         self.target_change_methode  = 0 # Méthode de changement de la cible
 
@@ -54,6 +52,12 @@ class WeaponSupport(object):
 
     def getWeaponNumber(self):
         return self.weapon_number
+
+    def getBlocNumber(self):
+        return self.bloc_number
+
+    def getBlocShape(self):
+        return self.bloc_shape
 
     def getTargetingMethode(self):
         return self.targeting_methode
@@ -104,6 +108,17 @@ class WeaponSupport(object):
         if self.getTargetChangeMethode() == target_change_methode.TIME :
             return "Time"
 
+    #############################
+    def getBlocShapeName(self):
+        shape_methode = WeaponSupportFeature.SHAPE
+        if self.getBlocShape() == shape_methode.HORIZONTAL_LINE :
+            return "Horizontal Line"
+        elif self.getBlocShape() == shape_methode.VERTICAL_LINE :
+            return "Vertical Line"
+        elif self.getBlocShape() == shape_methode.SQUARE :
+            return "Square"
+        elif self.getBlocShape() == shape_methode.CROSS :
+            return "Cross"
 
     #############################
     # Affichage des paramètres
@@ -111,7 +126,8 @@ class WeaponSupport(object):
         print(" ### Support ###")
         print(self.getAgeName())
         print("life : " + str(self.getLife()))
-        print("weapon number : " + str(self.getWeaponNumber()))
+        print("bloc number : " + str(self.getBlocNumber()))
+        print("bloc shape : " + self.getBlocShapeName())
         print("self.targeting_methode : "+ self.getTargetingMethodeName())
         print("target_change_methode : "+ self.getTargetChangeMethodeName())
         print(" ###############")
@@ -142,39 +158,48 @@ class WeaponSupport(object):
             support_feature.LIFE_MAX
         )
 
-        # WeaponNumber
-        self.weapon_number = random.randint(
-            support_feature.WEAPON_NUMBER_MIN, 
-            support_feature.WEAPON_NUMBER_MAX
+        # BlocNumber
+        self.bloc_number = random.randint(
+            support_feature.BLOC_NUMBER_MIN, 
+            support_feature.BLOC_NUMBER_MAX
         )
 
-        #self.fire_speed = random.randint(
-        #    support_feature.FIRE_SPEED_MIN,
-        #    support_feature.FIRE_SPEED_MAX
-        #)
-        #self.reloading_time = random.randint(
-        #    support_feature.RELOAD_TIME_MIN,
-        #    support_feature.RELOAD_TIME_MAX
-        #)
-        #self.range = random.randint(
-        #    support_feature.RANGE_MIN,
-        #    support_feature.RANGE_MAX
-        #)
-                
+        # Shape
+        if self.bloc_number == 1 :
+            self.bloc_shape = WeaponSupportFeature.SHAPE.SQUARE
+        elif self.bloc_number == 2 :
+            self.bloc_shape = random.randint(
+                WeaponSupportFeature.SHAPE.HORIZONTAL_LINE,
+                WeaponSupportFeature.SHAPE.VERTICAL_LINE
+            )
+        elif self.bloc_number == 3 :
+            self.bloc_shape = random.randint(
+                WeaponSupportFeature.SHAPE.HORIZONTAL_LINE,
+                WeaponSupportFeature.SHAPE.VERTICAL_LINE
+            )
+        elif self.bloc_number == 4 :
+            self.bloc_shape = random.randint(
+                WeaponSupportFeature.SHAPE.HORIZONTAL_LINE,
+                WeaponSupportFeature.SHAPE.SQUARE
+            )
+
+        elif self.bloc_number == 5 :
+            self.bloc_shape = random.randint(
+                0,
+                WeaponSupportFeature.SHAPE.NB_SHAPE - 1
+            )
+        
     #############################
     # to string
     def toString(self):
         s = str(
-            self.getAge()               + ";" +
-            self.getType()              + ";" +
-            self.getDamageMin()         + ";" +
-            self.getDamageMax()         + ";" +
-            self.getFireSpeed()         + ";" +
-            self.getReloadingTime()     + ";" +
-            self.getRange()             + ";" +
-            self.getAmmunition()        + ";" +
-            self.getMagasine()          + ";" +
-            self.getProjectileNumber()
+            self.getAge()                   + ";" +
+            self.getLife()                  + ";" +
+            self.getWeaponNumber()          + ";" +
+            self.getBlocNumber()            + ";" +
+            self.getBlocShape()             + ";" +
+            self.getTargetingMethode()      + ";" +
+            self.getTargetChangeMethode()
         )
         return s
 
@@ -185,20 +210,5 @@ class WeaponSupport(object):
         file.write(str(self.toString()+"\n"))
         file.close()
 
-
-
     #############################
-
-        ##########################################################
-        # Bilan des info
-
-        #elif self.age == WeaponFeature.AGE.MIDDLE_AGES:
-        #    toto = 2
-
-        #self.type=rand(0,2)
-
-        #min = self.type*rangeAge
-        #min = (self.type+1)*rangeAge
-
-
 
