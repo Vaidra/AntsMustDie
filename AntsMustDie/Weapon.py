@@ -5,9 +5,10 @@ class Weapon(object):
     """description of Weapon"""
 
     def __init__ (self):
+        self.age                = 0 # Age de l'arme
+        self.type               = 0 # Type de l'arme
         self.x_position         = 0 # Position ligne
         self.y_position         = 0 # Position colonne
-        self.age                = 0 # Age de l'arme
         self.damage_min         = 0 # Dégats minimaux
         self.damage_max         = 0 # Dégats maximaux
         self.damage             = 0 # Dégats aléatoire entre le min et max
@@ -19,6 +20,12 @@ class Weapon(object):
         self.projectile_number  = 0 # Projectile par balle tirée
 
     # Getteur
+    def getAge(self):
+        return self.age
+
+    def getType(self):
+        return self.type
+
     def getXPosition(self):
         return self.x_position
 
@@ -86,60 +93,157 @@ class Weapon(object):
     def setProjectileNumber(self, _projectile_number):
         self.projectile_number = _projectile_number
 
+    #############################
+    def getAgeName(self):
+        if getAge(self) == WeaponFeature.AGE.PREHISTORIC :
+            return "Prehistoric"
+        elif getAge(self) == WeaponFeature.AGE.MIDDLE_AGES :
+            return "MiddleAge"
+
+    #def getTypeName(self):
+        #if getType(self) == WeaponFeature.
+
+    def getWeaponName(self):
+        if self.getAge() == WeaponFeature.AGE.PREHISTORIC :
+            if self.getType() == WeaponFeature.AGE.PREHISTORIC_WEAPON.BOW :
+                return "Prehistoric Bow"
+            elif self.getType() == WeaponFeature.AGE.PREHISTORIC_WEAPON.SLING :
+                return "Prehistoric Sling"
+            elif self.getType() == WeaponFeature.AGE.PREHISTORIC_WEAPON.SPEAR :
+                return "Prehistoric Spear"
+            elif self.getType() == WeaponFeature.AGE.PREHISTORIC_WEAPON.JAVELIN :
+                return "Prehistoric Javelin"
+        elif self.getAge() == WeaponFeature.AGE.MIDDLE_AGES :
+            if self.getType() == WeaponFeature.AGE.MIDDLEAGES_WEAPON.BOW :
+                return "Middle Ages Bow"
+            elif self.getType() == WeaponFeature.AGE.MIDDLEAGES_WEAPON.CROSSBOW :
+                return "Middle Ages CrossBow"
+            elif self.getType() == WeaponFeature.AGE.MIDDLEAGES_WEAPON.THROW_AX :
+                return "Middle Ages Throw Ax"
+            elif self.getType() == WeaponFeature.AGE.MIDDLEAGES_WEAPON.JAVELIN :
+                return "Middle Ages Javelin"
+
 
 
     #############################
-    #############################
-    
+    # Affichage des paramètres
+    def displayInformations(self):
+        print(self.getWeaponName())
+        print("damage : "+str(self.damage_min) + " ; " + str(self.damage_max))
+        print("fire speed : "+str(self.fire_speed))
+        print("reloading time : "+str(self.getReloadingTime()))
 
     #############################
     # Generation
 
     def generate(self):
+        # Declaration des variables
+        weapon_feature = -1
+        age_weapons = WeaponFeature.AGE.DEFAULT
+        weapon_id = -1
+
         # Tirage aléatoire pour définir l'age
         print("nb age "+str( WeaponFeature.AGE.N_AGE))
-        self.age = random.randint(0,WeaponFeature.AGE.N_AGE)
+        self.age = random.randint(0,WeaponFeature.AGE.N_AGE-1)
         print("age "+str(self.age))
+
+        # Récuperation des noms des armes poru initialiser les valeurs des caractéristiques
+        #############################
         if self.age == WeaponFeature.AGE.PREHISTORIC:
+            age_weapons = WeaponFeature.AGE.PREHISTORIC_WEAPON
             # Tirage aléatoire pour définir l'arme
-            weapon = random.randint(0,WeaponFeature.AGE.PREHISTORIC_WEAPON.N_PREHISTORIC_WEAPON)
+            weapon_id = random.randint(0, age_weapons.N_PREHISTORIC_WEAPON-1)
+            print(" id = " + str(weapon_id))
+            self.type = weapon_id
             #############################
-            if weapon == PrehistoricWeapon.BOW:
-                # Initialisation des valeurs
-                val1 = random.randint(
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.DAMAGE_MIN, 
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.DAMAGE_MAX
-                )
-                #tt=WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW
-                #tt.
-                val2 = random.randint(
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.DAMAGE_MIN, 
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.DAMAGE_MAX
-                )
-                if val1 > val2:
-                    self.damage_min = val2
-                    self.damage_max = val1
-                else:
-                    self.damage_min = val1
-                    self.damage_max = val2
-                self.fire_speed = random.randint(
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.FIRE_SPEED_MIN,
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.FIRE_SPEED_MAX
-                )
-                self.reloading_time = random.randint(
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.RELOAD_TIME_MIN,
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.RELOAD_TIME_MAX
-                )
-                self.range = random.randint(
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.RANGE_MIN,
-                    WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW.RANGE_MAX
-                )
+            if weapon_id == age_weapons.BOW:
+                weapon_feature = age_weapons.PREHISTORIC_BOW
+            elif weapon_id == age_weapons.SLING :
+                weapon_feature = age_weapons.PREHISTORIC_SLING
+            elif weapon_id == age_weapons.SPEAR :
+                weapon_feature = age_weapons.PREHISTORIC_SPEAR
+            elif weapon_id == age_weapons.JAVELIN :
+                weapon_feature = age_weapons.PREHISTORIC_JAVELIN
+        #############################
+        elif self.age == WeaponFeature.AGE.MIDDLE_AGES:
+            age_weapons = WeaponFeature.AGE.MIDDLEAGES_WEAPON
+            weapon_id = random.randint(0,WeaponFeature.AGE.MIDDLEAGES_WEAPON.N_MIDDLE_AGE_WEAPON-1)
+            print(" id = " + str(weapon_id))
+            self.type = weapon_id
+            #############################
+            if weapon_id == age_weapons.BOW:
+                weapon_feature = age_weapons.MIDDLEAGES_BOW
+            elif weapon_id == age_weapons.CROSSBOW :
+                weapon_feature = age_weapons.MIDDLEAGES_CROSSBOW
+            elif weapon_id == age_weapons.THROW_AX :
+                weapon_feature = age_weapons.MIDDLEAGES_THROW_AX
+            elif weapon_id == age_weapons.JAVELIN :
+                weapon_feature = age_weapons.MIDDLEAGES_JAVELIN
+        #############################
+        ### Initialisation des valeurs
+        # Damage
+        val1 = random.randint(
+            weapon_feature.DAMAGE_MIN, 
+            weapon_feature.DAMAGE_MAX
+        )
+        #tt=WeaponFeature.AGE.PREHISTORIC_WEAPON.PREHISTORIC_BOW
+        #tt.
+        val2 = random.randint(
+            weapon_feature.DAMAGE_MIN, 
+            weapon_feature.DAMAGE_MAX
+        )
+        if val1 > val2:
+            self.damage_min = val2
+            self.damage_max = val1
+        else:
+            self.damage_min = val1
+            self.damage_max = val2
+        self.fire_speed = random.randint(
+            weapon_feature.FIRE_SPEED_MIN,
+            weapon_feature.FIRE_SPEED_MAX
+        )
+        self.reloading_time = random.randint(
+            weapon_feature.RELOAD_TIME_MIN,
+            weapon_feature.RELOAD_TIME_MAX
+        )
+        self.range = random.randint(
+            weapon_feature.RANGE_MIN,
+            weapon_feature.RANGE_MAX
+        )
                 
-            #############################
+    #############################
+    # to string
+    def toString(self):
+        s = str(
+            self.getAge()               + ";" +
+            self.getType()              + ";" +
+            self.getDamageMin()         + ";" +
+            self.getDamageMax()         + ";" +
+            self.getFireSpeed()         + ";" +
+            self.getReloadingTime()     + ";" +
+            self.getRange()             + ";" +
+            self.getAmmunition()        + ";" +
+            self.getMagasine()          + ";" +
+            self.getProjectileNumber()
+        )
+        return s
+
+    #############################
+    # Sauvegarde de l'arme
+    def save(self,_filename):
+        file = open(_filename, "w")
+        file.write(str(self.toString()+"\n"))
+        file.close()
+
+
+
+    #############################
 
         ##########################################################
-        elif self.age == WeaponFeature.AGE.MIDDLE_AGES:
-            toto = 2
+        # Bilan des info
+
+        #elif self.age == WeaponFeature.AGE.MIDDLE_AGES:
+        #    toto = 2
 
         #self.type=rand(0,2)
 

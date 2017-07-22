@@ -9,6 +9,7 @@ from Weapon import *
 
 weap = Weapon();
 weap.generate();
+weap.displayInformations();
 
 """
 class TEST():
