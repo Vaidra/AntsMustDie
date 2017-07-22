@@ -14,10 +14,10 @@ class Weapon(object):
         self.damage             = 0 # Dégats aléatoire entre le min et max
         self.fire_speed         = 0 # Vitesse de tir
         self.reloading_time     = 0 # Temps de rechargement
-        self.range              = 0 # Distance
-        self.ammunition         = 0 # Munition dans un chargeur
+        self.distance_max       = 0 # Distance maximale
+        self.ammunition         = 1 # Munition dans un chargeur
         self.magasine           = 0 # Chargeur
-        self.projectile_number  = 0 # Projectile par balle tirée
+        self.projectile_number  = 1 # Projectile par balle tirée
 
     # Getteur
     def getAge(self):
@@ -47,8 +47,8 @@ class Weapon(object):
     def getReloadingTime(self):
         return self.reloading_time
 
-    def getRange(self):
-        return self.range
+    def getDistanceMax(self):
+        return self.distance_max
 
     def getAmmunition(self):
         return self.ammunition
@@ -81,8 +81,8 @@ class Weapon(object):
     def setReloadingTime(self, _reload_time):
         self.reloading_time = _reload_time
 
-    def setRange(self, _range):
-        self.range = _range
+    def setDistanceMax(self, _distance_max):
+        self.distance_max = _distance_max
 
     def setAmmunition(self, _ammunition):
         self.ammunition = _ammunition
@@ -133,6 +133,10 @@ class Weapon(object):
         print("damage : "+str(self.damage_min) + " ; " + str(self.damage_max))
         print("fire speed : "+str(self.fire_speed))
         print("reloading time : "+str(self.getReloadingTime()))
+        print("range : " + str(self.getDistanceMax()))
+        print("Ammunition : " + str(self.getAmmunition()))
+        print("Magasine : " + str(self.getMagasine()))
+        print("ProjectileNumber : " + str(self.getProjectileNumber()))
         print(" ##############")        
 
     #############################
@@ -208,7 +212,7 @@ class Weapon(object):
             weapon_feature.RELOAD_TIME_MIN,
             weapon_feature.RELOAD_TIME_MAX
         )
-        self.range = random.randint(
+        self.distance_max = random.randint(
             weapon_feature.RANGE_MIN,
             weapon_feature.RANGE_MAX
         )
@@ -217,16 +221,16 @@ class Weapon(object):
     # to string
     def toString(self):
         s = str(
-            self.getAge()               + ";" +
-            self.getType()              + ";" +
-            self.getDamageMin()         + ";" +
-            self.getDamageMax()         + ";" +
-            self.getFireSpeed()         + ";" +
-            self.getReloadingTime()     + ";" +
-            self.getRange()             + ";" +
-            self.getAmmunition()        + ";" +
-            self.getMagasine()          + ";" +
-            self.getProjectileNumber()
+            str(self.getAge())               + ";" +
+            str(self.getType())              + ";" +
+            str(self.getDamageMin())         + ";" +
+            str(self.getDamageMax())         + ";" +
+            str(self.getFireSpeed())         + ";" +
+            str(self.getReloadingTime())     + ";" +
+            str(self.getDistanceMax())       + ";" +
+            str(self.getAmmunition())        + ";" +
+            str(self.getMagasine())          + ";" +
+            str(self.getProjectileNumber())
         )
         return s
 

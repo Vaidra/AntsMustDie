@@ -193,13 +193,13 @@ class WeaponSupport(object):
     # to string
     def toString(self):
         s = str(
-            self.getAge()                   + ";" +
-            self.getLife()                  + ";" +
-            self.getWeaponNumber()          + ";" +
-            self.getBlocNumber()            + ";" +
-            self.getBlocShape()             + ";" +
-            self.getTargetingMethode()      + ";" +
-            self.getTargetChangeMethode()
+            str(self.getAge())                   + ";" +
+            str(self.getLife())                  + ";" +
+            str(self.getWeaponNumber())          + ";" +
+            str(self.getBlocNumber())            + ";" +
+            str(self.getBlocShape())             + ";" +
+            str(self.getTargetingMethode())      + ";" +
+            str(self.getTargetChangeMethode())
         )
         return s
 

@@ -11,10 +11,12 @@ from WeaponSupport import *
 weap = Weapon();
 weap.generate();
 weap.displayInformations();
+weap.save("weap0")
 
 support = WeaponSupport();
 support.generate();
 support.displayInformations();
+support.save("supp0")
 
 """
 class TEST():
