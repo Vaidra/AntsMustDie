@@ -1,0 +1,45 @@
+/!\ Toujours se placer sur sa branche
+/!\ Toujours fusionner les branches dans sa propre branche avant de modifier la branche master
+/!\ Ne jamais développer dans la branche master
+
+Bien Se placer sur la branche voulue
+
+* Pour récuperer le dépot du serveur :
+	Se placer sur la branche à récuperer s'assurer que le code local à été commit ouvrir l'interface et taper 
+	git pull
+* Pour envoyer sur le serveur :
+	Se placer sur la branche à envoyer s'assurer que le code local à été commit ouvrir l'interface et taper 
+	git push
+* Pour ajouter un commit :
+	Se placer sur la branche modifié, ouvrir l'interface ajouter le/les fichiers modifiés en tapant 
+	git add toto 
+	puis taper 
+	git commit -m "Détails des Modifications effectuées"
+
+* Pour naviger entre les branches :
+	git checkout nom_branche_dans_laquelle_je_veux_aller
+
+* Pour fusionner une branche avec la branche principal master :
+	Se placer sur sa branche master
+	git checkout master
+	vérifier les mises à jour éventuelles
+	git pull
+	retourner sur sa branche (ex:toto)
+	git checkout toto
+	Commiter toutes les modifications en cours
+	git add .
+	git commit "..."
+	Fusionner la branche toto avec master, cela récupere les données de la branche master et les fusionne dans la branche toto
+	git merge master
+	/!\ Si jamais il y a des conflits les gérer sur sa branche, jamais sur master
+	Si la fusion c'est bien passer, aller sur master
+	git checkout master
+	Fusionner les données de sa branche toto dans master
+	git merge toto
+	Puis envoyer les modifications de master sur le serveur
+	git push master
+	Retourner sur sa branche
+	git checkout toto
+	Envoyer les modif sur le serveur
+	git push toto
+	
