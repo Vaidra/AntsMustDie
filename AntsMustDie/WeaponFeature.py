@@ -19,7 +19,7 @@ class WeaponFeature(object):
             SLING                = 1 # FRONDE
             SPEAR                = 2 # LANCE
             JAVELIN              = 3 # JAVELOT
-            N_PREHISTORIC_WEAPON = 4
+            N_PREHISTORIC_WEAPON = 4 # NB ARME PREHISTORIQUE
 
             #############################
 

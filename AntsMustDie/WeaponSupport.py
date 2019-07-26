@@ -26,7 +26,7 @@ class WeaponSupport(object):
         self.y_position             = 0 # Position colonne
         self.life                   = 0 # Vie du support
         self.weapon_number          = 0 # Nombre d'arme portée
-        self.bloc_number            = 0 # Nombre d'arme portée
+        self.bloc_number            = 0 # Nombre de bloc du support
         self.bloc_shape             = 0 # Forme du support
         self.targeting_methode      = 0 # Méthode de ciblage de la cible
         self.target_change_methode  = 0 # Méthode de changement de la cible

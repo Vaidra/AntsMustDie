@@ -19,6 +19,7 @@ class Weapon(object):
         self.magasine           = 0 # Chargeur
         self.projectile_number  = 1 # Projectile par balle tirée
 
+    #############################
     # Getteur
     def getAge(self):
         return self.age
@@ -59,6 +60,7 @@ class Weapon(object):
     def getProjectileNumber(self):
         return self.projectile_number
 
+    #############################
     # Setteur
     def setXPosition(self, _x_position):
         self.x_position = _x_position
